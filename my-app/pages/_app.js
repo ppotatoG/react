@@ -1,3 +1,4 @@
+import react, {useState} from "react";
 import styled from "styled-components";
 import '../styles/globals.css'
 import styles from "../styles/Home.module.css";
@@ -37,7 +38,7 @@ const ConfirmButton = styled.a`
 `;
 
 const ConfirmCount = styled.span`
-   position: absolute;
+    position: absolute;
     top: -2vw;
     right: -2vw;
     border-radius: 50px;
@@ -50,17 +51,22 @@ const ConfirmCount = styled.span`
 `;
 
 const MyApp = () => {
-  return (
-      <div className={styles.complete}>
-        <Header>소연님, 픽업이 완료되었습니다.</Header>
-        <Text>이제 원하시는 사람들과 원하시는 대로 마셔보세요. :)</Text>
-        <DetailButton>주문 내역 상세보기</DetailButton>
-        <ConfirmButton>
-            확인
-            <ConfirmCount>1</ConfirmCount>
-        </ConfirmButton>
-      </div>
-  )
+    const [number, setNumber] = useState(0);
+
+    const upCount = () => {
+        setNumber(number + 1);
+    }
+    return (
+        <div className={styles.complete}>
+            <Header>소연님, 픽업이 완료되었습니다.</Header>
+            <Text>이제 원하시는 사람들과 원하시는 대로 마셔보세요. :)</Text>
+            <DetailButton>주문 내역 상세보기</DetailButton>
+            <ConfirmButton onClick={upCount}>
+                확인
+                <ConfirmCount number={number}>{number}</ConfirmCount>
+            </ConfirmButton>
+        </div>
+    )
 }
 
 export default MyApp;
