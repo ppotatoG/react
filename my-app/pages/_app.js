@@ -63,7 +63,7 @@ const MyApp = () => {
             <DetailButton>주문 내역 상세보기</DetailButton>
             <ConfirmButton onClick={upCount}>
                 확인
-                <ConfirmCount number={number}>{number}</ConfirmCount>
+                {number && <ConfirmCount number={number}>{number}</ConfirmCount> || ''}
             </ConfirmButton>
         </div>
     )
